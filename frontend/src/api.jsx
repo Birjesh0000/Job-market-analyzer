@@ -1,20 +1,7 @@
 import axios from 'axios';
 
-// Determine API URL based on environment
-let API_BASE_URL;
-
-if (import.meta.env.VITE_API_URL) {
-  // Use env variable if set
-  API_BASE_URL = import.meta.env.VITE_API_URL;
-} else if (typeof window !== 'undefined' && window.location.hostname !== 'localhost') {
-  // Production: use full URL to Render backend
-  API_BASE_URL = 'https://job-market-analyzer-vejc.onrender.com/api';
-} else {
-  // Local development: use relative path
-  API_BASE_URL = '/api';
-}
-
-console.log('API_BASE_URL:', API_BASE_URL);
+// Use environment variable or fallback to relative path for local development
+const API_BASE_URL = import.meta.env.VITE_API_URL || '/api';
 
 const apiClient = axios.create({
   baseURL: API_BASE_URL,
