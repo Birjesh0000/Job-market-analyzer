@@ -227,6 +227,53 @@ app.get('/api/insights/stats', async (req, res, next) => {
 });
 
 /**
+ * ==================== SCHEDULER MANAGEMENT ENDPOINTS ====================
+ */
+
+const schedulerManager = require('./scheduler-manager');
+
+/**
+ * POST /api/scheduler/start - Start the background scheduler
+ */
+app.post('/api/scheduler/start', (req, res, next) => {
+  try {
+    const result = schedulerManager.startScheduler();
+    const statusCode = result.success ? 200 : 400;
+    res.status(statusCode).json(result);
+  } catch (error) {
+    next(error);
+  }
+});
+
+/**
+ * POST /api/scheduler/stop - Stop the background scheduler
+ */
+app.post('/api/scheduler/stop', (req, res, next) => {
+  try {
+    const result = schedulerManager.stopScheduler();
+    const statusCode = result.success ? 200 : 400;
+    res.status(statusCode).json(result);
+  } catch (error) {
+    next(error);
+  }
+});
+
+/**
+ * GET /api/scheduler/status - Get scheduler status
+ */
+app.get('/api/scheduler/status', (req, res, next) => {
+  try {
+    const status = schedulerManager.getStatus();
+    res.json({
+      success: true,
+      data: status,
+    });
+  } catch (error) {
+    next(error);
+  }
+});
+
+/**
  * Global error handling middleware
  */
 app.use((err, req, res, next) => {
