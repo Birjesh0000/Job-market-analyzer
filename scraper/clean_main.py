@@ -11,6 +11,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from cleaner import DataCleaner
 from logger import logger
 from utils import DataExporter
+from analytics import generate_analysis_report
 
 def main():
     """Main execution for data cleaning"""
@@ -62,6 +63,10 @@ def main():
         logger.info(f"  Duplicates removed: {stats['duplicates_removed']}")
         logger.info(f"  Final cleaned records: {stats['final_count']}")
         logger.info(f"  Records with missing values filled: {stats['records_with_missing_values']}")
+        
+        # Generate detailed analysis report
+        analysis_report = generate_analysis_report(cleaned_jobs, stats)
+        logger.info(analysis_report)
         
         # Sample output
         if cleaned_jobs:
