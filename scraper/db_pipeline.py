@@ -133,7 +133,7 @@ class PipelineIntegration:
         results = {
             'stage': 'cleaning_to_database',
             'input_records': len(cleaned_jobs),
-            'database_mode': 'MongoDB' if self.db_inserter.db_manager.db else 'Local Storage'
+            'database_mode': 'MongoDB' if self.db_inserter.db_manager.db is not None else 'Local Storage'
         }
         
         if not export_to_db:

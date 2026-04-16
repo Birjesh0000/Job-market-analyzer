@@ -145,8 +145,8 @@ class DatabaseManager:
                 try:
                     # Validate record
                     if not JobModel.validate(job):
-                        error_ids.append(job.get("jobId", "unknown"))
-                        logger.debug(f"Skipping invalid job: {job.get('jobId')}")
+                        error_ids.append(job.get("jobId") or job.get("id", "unknown"))
+                        logger.debug(f"Skipping invalid job: {job.get('jobId') or job.get('id')}")
                         continue
                     
                     # Normalize for database
@@ -297,7 +297,7 @@ class DatabaseManager:
     def get_database_stats(self) -> Dict:
         """Get comprehensive database statistics"""
         stats = {
-            "mode": "MongoDB" if self.db else "Local Storage",
+            "mode": "MongoDB" if self.db is not None else "Local Storage",
             "total_jobs": self.get_job_count(),
             "top_skills": self.get_top_skills(5),
             "top_companies": self.get_top_companies(5),

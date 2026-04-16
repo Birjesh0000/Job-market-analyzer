@@ -38,7 +38,7 @@ class JobModel:
     DEDUP_FIELDS = ["title", "company", "location"]
     
     # Required fields for a valid job record
-    REQUIRED_FIELDS = ["jobId", "title", "company", "location", "url"]
+    REQUIRED_FIELDS = ["title", "company", "location", "url"]
     
     # Optional fields with defaults
     OPTIONAL_FIELDS = {
@@ -56,6 +56,11 @@ class JobModel:
     @staticmethod
     def validate(job: Dict) -> bool:
         """Validate job record has required fields"""
+        # Check for id or jobId (at least one must exist)
+        if not job.get("jobId") and not job.get("id"):
+            return False
+        
+        # Check other required fields
         for field in JobModel.REQUIRED_FIELDS:
             if field not in job or not job[field]:
                 return False
@@ -72,8 +77,11 @@ class JobModel:
         Returns:
             Normalized job record with all fields
         """
+        # Handle both "id" and "jobId" field names
+        job_id = job.get("jobId") or job.get("id", "")
+        
         normalized = {
-            "jobId": job.get("jobId", ""),
+            "jobId": job_id,
             "title": job.get("title", "").strip(),
             "company": job.get("company", "").strip(),
             "location": job.get("location", "").strip(),
