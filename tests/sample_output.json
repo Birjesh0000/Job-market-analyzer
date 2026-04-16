@@ -1,0 +1,102 @@
+[
+  {
+    "id": "sample-1",
+    "title": "Senior Python Developer",
+    "company": "TechCorp Inc",
+    "location": "San Francisco, CA",
+    "url": "https://example.com/jobs/1",
+    "type": "Full-time",
+    "posted_at": "2024-04-15T10:00:00Z",
+    "description": "Looking for experienced Python developer with 5+ years experience"
+  },
+  {
+    "id": "sample-2",
+    "title": "Data Engineer",
+    "company": "DataFlow Systems",
+    "location": "New York, NY",
+    "url": "https://example.com/jobs/2",
+    "type": "Full-time",
+    "posted_at": "2024-04-14T14:30:00Z",
+    "description": "Build data pipelines using Python and Spark"
+  },
+  {
+    "id": "sample-3",
+    "title": "Full Stack Developer",
+    "company": "WebDev Studio",
+    "location": "Remote",
+    "url": "https://example.com/jobs/3",
+    "type": "Full-time",
+    "posted_at": "2024-04-13T09:15:00Z",
+    "description": "React, Node.js, MongoDB - build modern web applications"
+  },
+  {
+    "id": "sample-4",
+    "title": "Machine Learning Engineer",
+    "company": "AI Solutions Ltd",
+    "location": "Boston, MA",
+    "url": "https://example.com/jobs/4",
+    "type": "Full-time",
+    "posted_at": "2024-04-12T11:45:00Z",
+    "description": "TensorFlow, PyTorch, work on ML models at scale"
+  },
+  {
+    "id": "sample-5",
+    "title": "DevOps Engineer",
+    "company": "CloudOps Inc",
+    "location": "Seattle, WA",
+    "url": "https://example.com/jobs/5",
+    "type": "Full-time",
+    "posted_at": "2024-04-11T13:20:00Z",
+    "description": "Kubernetes, Docker, AWS - infrastructure automation"
+  },
+  {
+    "id": "sample-6",
+    "title": "Database Administrator",
+    "company": "DataVault Corp",
+    "location": "Austin, TX",
+    "url": "https://example.com/jobs/6",
+    "type": "Full-time",
+    "posted_at": "2024-04-10T10:00:00Z",
+    "description": "PostgreSQL, MySQL, MongoDB - manage enterprise databases"
+  },
+  {
+    "id": "sample-7",
+    "title": "Frontend Developer",
+    "company": "UI Masters",
+    "location": "Los Angeles, CA",
+    "url": "https://example.com/jobs/7",
+    "type": "Full-time",
+    "posted_at": "2024-04-09T15:30:00Z",
+    "description": "React, Vue.js, Tailwind CSS - beautiful interfaces"
+  },
+  {
+    "id": "sample-8",
+    "title": "Backend Engineer",
+    "company": "ServerTech",
+    "location": "Chicago, IL",
+    "url": "https://example.com/jobs/8",
+    "type": "Full-time",
+    "posted_at": "2024-04-08T09:00:00Z",
+    "description": "Node.js, Java, Spring Boot - scalable backend systems"
+  },
+  {
+    "id": "sample-9",
+    "title": "QA Engineer",
+    "company": "Quality First",
+    "location": "Denver, CO",
+    "url": "https://example.com/jobs/9",
+    "type": "Full-time",
+    "posted_at": "2024-04-07T12:15:00Z",
+    "description": "Selenium, Cypress, Manual testing - ensure product quality"
+  },
+  {
+    "id": "sample-10",
+    "title": "Cloud Solutions Architect",
+    "company": "CloudGiant",
+    "location": "Remote",
+    "url": "https://example.com/jobs/10",
+    "type": "Full-time",
+    "posted_at": "2024-04-06T14:45:00Z",
+    "description": "Design cloud infrastructure for enterprise clients"
+  }
+]
