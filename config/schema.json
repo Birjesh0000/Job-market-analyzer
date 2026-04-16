@@ -1,0 +1,137 @@
+{
+  "collections": {
+    "jobs": {
+      "description": "Main collection for job listings",
+      "fields": {
+        "_id": {
+          "type": "ObjectId",
+          "description": "MongoDB auto-generated ID"
+        },
+        "jobId": {
+          "type": "String",
+          "description": "Unique identifier from source",
+          "index": true,
+          "unique": true
+        },
+        "title": {
+          "type": "String",
+          "description": "Job title",
+          "index": true
+        },
+        "company": {
+          "type": "String",
+          "description": "Company name",
+          "index": true
+        },
+        "location": {
+          "type": "String",
+          "description": "Job location/city",
+          "index": true
+        },
+        "country": {
+          "type": "String",
+          "description": "Country code"
+        },
+        "skills": {
+          "type": "Array",
+          "items": "String",
+          "description": "Required skills (normalized)"
+        },
+        "description": {
+          "type": "String",
+          "description": "Full job description"
+        },
+        "url": {
+          "type": "String",
+          "description": "Link to job listing"
+        },
+        "salaryMin": {
+          "type": "Number",
+          "description": "Minimum salary (optional)"
+        },
+        "salaryMax": {
+          "type": "Number",
+          "description": "Maximum salary (optional)"
+        },
+        "currency": {
+          "type": "String",
+          "description": "Salary currency"
+        },
+        "jobType": {
+          "type": "String",
+          "enum": ["Full-time", "Part-time", "Contract", "Internship", "Unknown"],
+          "description": "Employment type"
+        },
+        "postedDate": {
+          "type": "Date",
+          "description": "When the job was posted",
+          "index": true
+        },
+        "scrapedDate": {
+          "type": "Date",
+          "description": "When data was scraped",
+          "default": "now()"
+        },
+        "source": {
+          "type": "String",
+          "description": "Data source (e.g., 'github_jobs', 'linkedin')"
+        },
+        "isActive": {
+          "type": "Boolean",
+          "description": "Is job still active",
+          "default": true
+        }
+      },
+      "indexes": [
+        {"jobId": 1, "unique": true},
+        {"company": 1},
+        {"location": 1},
+        {"skills": 1},
+        {"postedDate": -1},
+        {"source": 1}
+      ]
+    },
+    "skills": {
+      "description": "Aggregated skills data for analytics",
+      "fields": {
+        "_id": {
+          "type": "ObjectId"
+        },
+        "skillName": {
+          "type": "String",
+          "index": true,
+          "unique": true
+        },
+        "frequency": {
+          "type": "Number",
+          "description": "How many jobs require this skill"
+        },
+        "lastUpdated": {
+          "type": "Date",
+          "default": "now()"
+        }
+      }
+    },
+    "companies": {
+      "description": "Aggregated company data",
+      "fields": {
+        "_id": {
+          "type": "ObjectId"
+        },
+        "companyName": {
+          "type": "String",
+          "index": true,
+          "unique": true
+        },
+        "jobCount": {
+          "type": "Number",
+          "description": "Number of active job postings"
+        },
+        "lastUpdated": {
+          "type": "Date",
+          "default": "now()"
+        }
+      }
+    }
+  }
+}
