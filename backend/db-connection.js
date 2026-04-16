@@ -22,7 +22,12 @@ class MongoConnection {
 
     try {
       const client = new MongoClient(this.uri, {
-        serverSelectionTimeoutMS: 5000,
+        serverSelectionTimeoutMS: 10000,
+        connectTimeoutMS: 10000,
+        socketTimeoutMS: 10000,
+        ssl: true,
+        tlsInsecure: true,
+        retryWrites: true,
       });
 
       await client.connect();
