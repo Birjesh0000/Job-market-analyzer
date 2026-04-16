@@ -2,7 +2,6 @@
 Data transformation and normalization functions
 """
 import re
-import pandas as pd
 from typing import List, Dict, Set
 
 class SkillNormalizer:
