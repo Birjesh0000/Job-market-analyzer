@@ -305,17 +305,36 @@ app.use((req, res) => {
  */
 async function startServer() {
   try {
+    console.log('[Startup] Attempting to initialize database...');
+    console.log('[Startup] MongoDB URI:', process.env.MONGODB_URI ? 'Set' : 'Not set');
+    console.log('[Startup] DB Name:', process.env.DB_NAME);
+    console.log('[Startup] Port:', PORT);
+    
     db = await initializeDatabase();
-    console.log('Database initialized successfully');
+    console.log('[Startup] Database initialized successfully');
 
-    app.listen(PORT, () => {
-      console.log(`✓ Server running on port ${PORT}`);
-      console.log(`✓ Health check: http://localhost:${PORT}/api/health`);
-      console.log(`✓ Jobs endpoint: http://localhost:${PORT}/api/jobs`);
+    const server = app.listen(PORT, '0.0.0.0', () => {
+      console.log(`✅ Server running on port ${PORT}`);
+      console.log(`✅ Environment: ${process.env.NODE_ENV}`);
     });
+
+    // Graceful shutdown
+    server.on('close', () => {
+      console.log('[Shutdown] Server closed');
+    });
+
   } catch (error) {
-    console.error('Failed to start server:', error.message);
-    process.exit(1);
+    console.error('[Startup] Failed to start server');
+    console.error('[Startup] Error type:', error.constructor.name);
+    console.error('[Startup] Error message:', error.message);
+    console.error('[Startup] Error stack:', error.stack);
+    
+    // Still start the server even if DB fails (can retry)
+    console.error('[Startup] Starting server without database...');
+    const server = app.listen(PORT, '0.0.0.0', () => {
+      console.log(`✅ Server running on port ${PORT} (Database unavailable)`);
+      console.warn('⚠️  Database connection failed - API will return errors');
+    });
   }
 }
 

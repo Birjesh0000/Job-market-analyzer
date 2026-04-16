@@ -22,6 +22,10 @@ class MongoConnection {
     }
 
     try {
+      console.log('[MongoDB] Attempting connection...');
+      console.log('[MongoDB] URI start:', this.uri.substring(0, 50) + '...');
+      console.log('[MongoDB] Database:', this.dbName);
+
       const client = new MongoClient(this.uri, {
         serverSelectionTimeoutMS: 10000,
         connectTimeoutMS: 10000,
@@ -32,13 +36,15 @@ class MongoConnection {
       });
 
       await client.connect();
-      console.log('Connected to MongoDB');
+      console.log('[MongoDB] ✅ Connected to MongoDB');
 
       cachedClient = client;
       cachedDb = client.db(this.dbName);
       return cachedDb;
     } catch (error) {
-      console.error('MongoDB connection failed:', error.message);
+      console.error('[MongoDB] ❌ Connection failed');
+      console.error('[MongoDB] Error type:', error.constructor.name);
+      console.error('[MongoDB] Error message:', error.message);
       throw error;
     }
   }
