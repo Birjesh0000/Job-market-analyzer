@@ -4,7 +4,7 @@ Real-time job market insights and trends analysis platform.
 
 ## Live Demo
 
-- **Frontend**: https://job-market-analyzer.vercel.app
+- **Frontend**: https://job-market-analyzer-seven.vercel.app/
 - **Backend API**: https://job-market-analyzer-vejc.onrender.com
 
 ## Features
@@ -90,8 +90,3 @@ Job-market-analyzer/
 ├── scraper.py        # Data collection script
 ├── cleaner.py        # Data cleaning pipeline
 └── scheduler.py      # Automated data collection
-```
-
-## License
-
-MIT
